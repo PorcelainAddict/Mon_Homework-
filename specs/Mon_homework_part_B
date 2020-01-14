@@ -1,0 +1,59 @@
+#______PART_____B______
+require ("minitest/autorun")
+require ("minitest/reporters")
+require_relative('../Mon_homework')
+
+
+
+Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
+
+
+class TestSportsTeam< MiniTest::Test
+
+  def setup
+
+    @TheRoamingSardines = SportsTeam.new("Coach Disco-Tricks", ["Evil Martin", "Linda Hefferstein", "Stane", "Julia the mug destroyer",
+      "Alfred the pacemaker", "Jeremy the hombre"],"The Roaming Sardines", [0])
+
+    end
+
+    def test_team_roster()
+      assert_equal(["Evil Martin", "Linda Hefferstein", "Stane", "Julia the mug destroyer",
+        "Alfred the pacemaker", "Jeremy the hombre"], @TheRoamingSardines.get_team_roster)
+    end
+
+    def test_team_name()
+      assert_equal("The Roaming Sardines", @TheRoamingSardines.get_team_name)
+    end
+
+    def test_coach_name()
+      assert_equal("Coach Disco-Tricks", @TheRoamingSardines.get_coach_name)
+    end
+
+    def test_replace_coach()
+      # @TheRoamingSardines.set_replace_coach("Coach Hefty-mare")
+      @TheRoamingSardines.coach_name = "Coach Hefty-mare"
+      assert_equal("Coach Hefty-mare", @TheRoamingSardines.get_coach_name)
+    end
+
+    def test_add_new_player()
+      @TheRoamingSardines.team_players = "Chargey Charlie"
+      assert_equal("Chargey Charlie", @TheRoamingSardines.team_players)
+    end
+
+#Add a method that takes in a string of a player’s name and checks to see if they are in the players array.
+
+    def test_roster_check()
+    @TheRoamingSardines = 'Stane'
+    assert_equal("Stane", @TheRoamingSardines)
+  end
+
+    def test_update_points()
+    points = @TheRoamingSardines.team_points = 1
+      assert_equal(1, @TheRoamingSardines.update_points)
+    end
+
+
+
+
+  end
